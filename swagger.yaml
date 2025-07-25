@@ -11,7 +11,7 @@ paths:
   /skillsFramework/jobs:
     get:
       summary: Get job role details
-      description: Retrieve complete job role details, including description, critical work functions, key tasks, skills, and performance expectations.
+      description: Retrieve job role details, including description, critical work functions, key tasks, skills, and performance expectations.
       tags:
         - Data APIs
       parameters:
@@ -83,7 +83,7 @@ paths:
   /skillsFramework/skills:
     get:
       summary: Get skills details
-      description: Retrieve detailed skill-related information, including proficiency level, skill type, and descriptions.
+      description: Retrieve skill details, including proficiency level, skill type, and descriptions.
       tags:
         - Data APIs
       parameters:
@@ -110,7 +110,7 @@ paths:
           description: Description of the skill as defined in the Skills Framework.
           schema:
             type: string
-          example: "Organisational Analysis"
+          example: "Evaluate factors that can affect the organization's performance as well as strategically assessing the organization's own resources and potential for improvement"
           
         - name: proficiency_level
           in: query
@@ -216,6 +216,11 @@ components:
           description: TSC code of the associated skill, as defined in the Skills Framework, required by the job role.
           example: "WST-SPI-5002-1.1"
 
+        skill_type:
+          type: string
+          description: Classification of the associated skill (e.g., TSC, CCS).
+          example: "tsc"
+
         sfw_version:
           type: string
           description: Version of the associated skill in the Skills Framework.
@@ -228,23 +233,23 @@ components:
         sfw_version:
           type: string
           description: Version of the associated skill in the Skills Framework.
-          example: "sfw2.0"
+          example: "sfw1.0"
           
-        sector:
+        sector_title:
           type: string
-          description: The sector name according to the Skills Framework, serving as a reference for classification.
-          example: "Critical Core Skills"
+          description: Title of the sector, as defined in the Skills Framework, where the job role resides in.
+          example: "Wholesale Trade"
           
         skill_title:
           type: string
-          description: The name of the skill required for the job role, mapped to the framework.
-          example: "Collaboration"
+          description: Title of the skill as defined in the Skills Framework.
+          example: "Organisational Analysis"
           
-        skill_sector_description:
+        skill_description:
           type: string
-          description: Description of the skill within the sector.
-          example: "Manage relationships and work collaboratively and effectively with others to achieve goals"
-        
+          description: Description of the skill as defined in the Skills Framework.
+          example: "Evaluate factors that can affect the organization's performance as well as strategically assessing the organization's own resources and potential for improvement"
+          
         skill_type:
           type: string
           description: Classification of the skill (e.g., TSC, CCS).
