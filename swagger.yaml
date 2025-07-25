@@ -238,17 +238,7 @@ components:
           type: string
           description: Description of the proficiency level for the associated skill.
           example: "Establish team effectiveness and manage partnerships to create a cooperative working environment which enables the achievement of goals"
-        
-        ability_knowledge_range_of_application_classification:
-          type: string
-          description: Classification of the skill (e.g., ability, knowledge, range_of_application).
-          example: "knowledge"
-        
-        ability_knowledge_range_of_application_item:
-          type: string
-          description: Details about the ability or knowledge classification.
-          example: "Stakeholder management strategies"
-        
+
         tsc_code:
           type: string
           description: A unique identifiers for skills.
@@ -268,3 +258,13 @@ components:
           type: boolean
           description: Indicates whether the skill is part of the SkillsFuture Series list of emerging skills.
           example: false
+          
+        ability_knowledge_range_of_application_classification:
+          type: string
+          description: Classification of the individual statements of ability, knowledge, or range_of_application.
+          example: "knowledge"
+        
+        ability_knowledge_range_of_application_item:
+          type: string
+          description: Individual statements of ability, knowledge, or range_of_application.
+          example: "Stakeholder management strategies"
