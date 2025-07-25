@@ -1,0 +1,241 @@
+openapi: 3.0.3
+info:
+  title: Skills Framework API
+  version: 1.0.12
+tags:
+  - name: Data APIs
+    description: To supply information about job roles and skills in line with Industry Transformation Maps
+  - name: Mapping APIs
+    description: APIs for skills mapping between different frameworks
+    
+paths:
+  /skillsFramework/jobs:
+    get:
+      summary: Get job role details
+      description: Retrieve complete job role details, including description, key tasks, skills, and performance expectations.
+      tags:
+        - Data APIs
+      parameters:
+        - name: sfw_version
+          in: query
+          required: false
+          description: Version of the framework
+          schema:
+            type: string
+          example: "sfw1.0"
+        - name: track
+          in: query
+          required: false
+          description: The official track name under which a job role falls
+          schema:
+            type: string
+          example: "Finance and Regulations"
+        - name: sector
+          in: query
+          required: false
+          description: The sector name according to the Skills Framework
+          schema:
+            type: string
+          example: "Wholesale Trade"
+        - name: job_role
+          in: query
+          required: false
+          description: Name of the job role as defined in the framework
+          schema:
+            type: string
+          example: "Head of Trade Finance"
+        - name: skill_title
+          in: query
+          required: false
+          description: The name of the skill required for the job role, mapped to the framework.
+          schema:
+            type: string
+          example: "Organisational Analysis"
+        - name: keytask
+          in: query
+          required: false
+          description: Specific key tasks aligned with the Skills Framework for this job role.
+          schema:
+            type: string
+          example: "Manage department's recruitment and retention efforts"
+      responses:
+        '200':
+          description: Job role details retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/jobs'
+        '400':
+          description: Invalid request
+        '404':
+          description: Job role not found
+        '500':
+          description: Server error
+  
+  /skillsFramework/skills:
+    get:
+      summary: Get skills details
+      description: Retrieve detailed skill-related information, including proficiency level, skill type, and descriptions.
+      tags:
+        - Data APIs
+      parameters:
+        - name: sfw_version
+          in: query
+          required: false
+          description: Version of the framework
+          schema:
+            type: string
+          example: "sfw1.0"
+        - name: skill_type
+          in: query
+          required: false
+          description: Classification of the skill (e.g., TSC, CCS)
+          schema:
+            type: string
+          example: "tsc"
+        - name: sector
+          in: query
+          required: false
+          description: The sector name according to the Skills Framework
+          schema:
+            type: string
+          example: "Wholesale Trade"
+        - name: skill_title
+          in: query
+          required: false
+          description: Name of the skill
+          schema:
+            type: string
+          example: "Organisational Analysis"
+        - name: skill_code
+          in: query
+          required: false
+          description: A unique identifiers for skills.
+          schema:
+            type: string
+          example: "CCS-CLB-A001-1"
+      responses:
+        '200':
+          description: Skills details retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/skills'
+        '400':
+          description: Invalid request
+        '404':
+          description: Skill not found
+        '500':
+          description: Server error
+
+components:
+  schemas:
+    jobs:
+      type: object
+      properties:
+        sfw_version:
+          type: string
+          description: Version of the framework.
+          example: "sfw1.0"
+        sector:
+          type: string
+          description: The sector name according to the Skills Framework, serving as a reference for classification.
+          example: "Wholesale Trade"
+        track:
+          type: string
+          description: The official track name under which a job role falls.
+          example: "Finance and Regulations"
+        job_role:
+          type: string
+          description: Name of the job role as defined in the framework. 
+          example: "Head of Trade Finance"
+        jobrole_description:
+          type: string
+          description:  A detailed description of the job role.
+          example: "The Head of Trade Finance assumes responsibility for driving execution of the organisation's trade finance activities and strategies. He/She is expected to have extensive knowledge of trade flows, trade settlements and trade finance operations. He oversees negotiations with financial institutions on trade finance. He is expected to have strong stakeholder engagement skills, team leadership capabilities and deep trade finance knowledge, both locally and globally."
+        performance_expectations:
+          type: string
+          description: Industry-defined performance standards for the job role, including statutory requirements.
+          example: ""
+        critical_work_function:
+          type: string
+          description: The work function associated with the job role, defining key responsibilities.
+          example: "Drive collaboration of human resource, technology and finance initiatives"
+        keytask:
+          type: string
+          description: Specific key tasks aligned with the Skills Framework for this job role.
+          example: "Manage department's recruitment and retention efforts"
+        skill_title:
+          type: string
+          description: The name of the skill required for the job role, mapped to the framework.
+          example: "Organisational Analysis"
+        skill_type:
+          type: string
+          description: Classification of the skill (e.g., TSC, CCS).
+          example: "tsc"
+        proficiency_level:
+          type: string
+          description: The required proficiency level for the skill, rated numerically or by category (e.g., 1, 2, 3, 4, 5, 6, basic, intermediate, advanced).
+          example: "2"
+          
+    skills:
+      type: object
+      properties:
+        sfw_version:
+          type: string
+          description: Version of the framework.
+          example: "sfw2.0"
+        sector:
+          type: string
+          description: The sector name according to the Skills Framework, serving as a reference for classification.
+          example: "Critical Core Skills"
+        skill_title:
+          type: string
+          description: The name of the skill required for the job role, mapped to the framework.
+          example: "Collaboration"
+        skill_sector_description:
+          type: string
+          description: Description of the skill within the sector.
+          example: "Manage relationships and work collaboratively and effectively with others to achieve goals"
+        skill_type:
+          type: string
+          description: Classification of the skill (e.g., TSC, CCS).
+          example: "ccs"
+        emerging_tsc:
+          type: boolean
+          description: Indicates whether the skill is emerging.
+          example: false
+        proficiency_level:
+          type: string
+          description: The required proficiency level for the skill, rated numerically or by category (e.g., 1, 2, 3, 4, 5, 6, Basic, Intermediate, Advanced).
+          example: "Advanced"
+        proficiency_description:
+          type: string
+          description: Details about the expected proficiency level.
+          example: "Establish team effectiveness and manage partnerships to create a cooperative working environment which enables the achievement of goals"
+        ability_knowledge_classification:
+          type: string
+          description: Classification of the skill (e.g., ability, knowledge).
+          example: "knowledge"
+        ability_knowledge_item:
+          type: string
+          description: Details about the ability or knowledge classification.
+          example: "Stakeholder management strategies"
+        skill_code:
+          type: string
+          description: A unique identifiers for skills.
+          example: "CCS-CLB-A001-1"
+        range_of_application:
+          type: string
+          description: Areas where the skill can be applied, covering industry-specific and cross-functional use cases.
+          example: |
+            - Customer data management systems
+            - Information technology asset management
+            - Information technology risk management
+            - Cybersecurity risk solutions
+            - Risk management data and tools
+            - Data management frameworks
