@@ -107,7 +107,7 @@ paths:
         - name: tsc_code
           in: query
           required: false
-          description: TSC code of the associated skill, as defined in the Skills Framework, required by the job role.
+          description: A unique identifier for skills.
           schema:
             type: string
           example: "WST-SPI-5002-1.1"
@@ -197,7 +197,7 @@ components:
         
         tsc_code:
           type: string
-          description: TSC code of the associated skill, as defined in the Skills Framework, required by the job role.
+          description: A unique identifier for skills.
           example: "WST-SPI-5002-1.1"
 
         skill_type:
@@ -241,7 +241,7 @@ components:
 
         tsc_code:
           type: string
-          description: A unique identifiers for skills.
+          description: A unique identifier for skills.
           example: "CCS-CLB-A001-1"
 
         skill_type:
