@@ -6,4 +6,4 @@ Official Swagger documentation for SkillsFuture Singapore's Skills Framework API
 
 ## 🌐 Live Documentation
 Access the interactive API docs:  
-[https://skillsfuture.github.io/skills-framework-api](https://1leafclover.github.io)
+[https://skillsfuture.github.io/skills-framework-api](https://jeremy-liu-sh.github.io/)
