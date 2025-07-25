@@ -103,23 +103,7 @@ paths:
           schema:
             type: string
           example: "Organisational Analysis"
-          
-        - name: skill_description
-          in: query
-          required: false
-          description: Description of the skill as defined in the Skills Framework.
-          schema:
-            type: string
-          example: "Evaluate factors that can affect the organization's performance as well as strategically assessing the organization's own resources and potential for improvement"
-          
-        - name: proficiency_level
-          in: query
-          required: false
-          description: Proficiency level of the skill, as defined in the Skills Framework, rated numerically or by category (e.g., 1, 2, 3, 4, 5, 6, basic, intermediate, advanced).
-          schema:
-            type: string
-          example: "5"
-          
+                
         - name: tsc_code
           in: query
           required: false
@@ -229,11 +213,6 @@ components:
     skills:
       type: object
       properties:
-      
-        sfw_version:
-          type: string
-          description: Version of the associated skill in the Skills Framework.
-          example: "sfw1.0"
           
         sector_title:
           type: string
@@ -249,49 +228,43 @@ components:
           type: string
           description: Description of the skill as defined in the Skills Framework.
           example: "Evaluate factors that can affect the organization's performance as well as strategically assessing the organization's own resources and potential for improvement"
-          
-        skill_type:
-          type: string
-          description: Classification of the skill (e.g., TSC, CCS).
-          example: "ccs"
-        
-        emerging_tsc:
-          type: boolean
-          description: Indicates whether the skill is emerging.
-          example: false
         
         proficiency_level:
           type: string
-          description: The required proficiency level for the skill, rated numerically or by category (e.g., 1, 2, 3, 4, 5, 6, Basic, Intermediate, Advanced).
-          example: "Advanced"
+          description: Proficiency level of the associated skill, as defined in the Skills Framework, rated numerically or by category (e.g., 1, 2, 3, 4, 5, 6, basic, intermediate, advanced).
+          example: "5"
         
         proficiency_description:
           type: string
-          description: Details about the expected proficiency level.
+          description: Description of the proficiency level for the associated skill.
           example: "Establish team effectiveness and manage partnerships to create a cooperative working environment which enables the achievement of goals"
         
-        ability_knowledge_classification:
+        ability_knowledge_range_of_application_classification:
           type: string
-          description: Classification of the skill (e.g., ability, knowledge).
+          description: Classification of the skill (e.g., ability, knowledge, range_of_application).
           example: "knowledge"
         
-        ability_knowledge_item:
+        ability_knowledge_range_of_application_item:
           type: string
           description: Details about the ability or knowledge classification.
           example: "Stakeholder management strategies"
         
-        skill_code:
+        tsc_code:
           type: string
           description: A unique identifiers for skills.
           example: "CCS-CLB-A001-1"
-        
-        range_of_application:
+
+        skill_type:
           type: string
-          description: Areas where the skill can be applied, covering industry-specific and cross-functional use cases.
-          example: |
-            - Customer data management systems
-            - Information technology asset management
-            - Information technology risk management
-            - Cybersecurity risk solutions
-            - Risk management data and tools
-            - Data management frameworks
+          description: Classification of the skill (e.g., TSC, CCS).
+          example: "tsc"
+          
+        sfw_version:
+          type: string
+          description: Version of the associated skill in the Skills Framework.
+          example: "sfw1.0"
+
+        is_sfs_emerging:
+          type: boolean
+          description: Indicates whether the skill is part of the SkillsFuture Series list of emerging skills.
+          example: false
