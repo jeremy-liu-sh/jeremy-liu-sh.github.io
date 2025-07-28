@@ -242,7 +242,7 @@ components:
         tsc_code:
           type: string
           description: A unique identifier for skills.
-          example: "CCS-CLB-A001-1"
+          example: "WST-SPI-5002-1.1"
 
         skill_type:
           type: string
