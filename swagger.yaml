@@ -258,6 +258,11 @@ components:
           type: boolean
           description: Indicates whether the skill is part of the SkillsFuture Series list of emerging skills.
           example: false
+
+        is_casl:
+          type: boolean
+          description: Indicates whether the skill is part of the Course Approval Skills List.
+          example: true
           
         ability_knowledge_range_of_application_classification:
           type: string
